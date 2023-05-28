@@ -1,2 +1,20 @@
-<h1>
-</h1>
+<table class="table mt-5">
+  <thead>
+    <tr class="table-primary" >
+      <th scope="col">#</th>
+      <th scope="col">Test Date</th>
+      <th scope="col">Actual Test Date</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+	<% @covids.each_with_index do |c,idx| %>
+		<tr>
+			<th scope="row"><%= idx+1 %></th>
+			<td><%= c.test_date %></td>	
+			<td><%= c.actual_test_date %></td>	
+			<td><%= c.status %></td>
+		</tr>
+	<% end %>
+  </tbody>
+</table>

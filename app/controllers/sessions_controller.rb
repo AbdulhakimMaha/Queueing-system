@@ -5,10 +5,9 @@ class SessionsController < ApplicationController
 	
 	def create
 		user = User.find_by(citizen_id: params[:citizen_id].to_i)
-		puts user.citizen_id
 		if user.present? && user.authenticate(params[:password])
 			session[:user_id] = user.id
-			redirect_to root_path, notice: "Logged in successfully."
+			redirect_to home_path, notice: "Logged in successfully."
 		else
 			flash[:alert] = "Invalid Citizen ID or password."
 			render :new

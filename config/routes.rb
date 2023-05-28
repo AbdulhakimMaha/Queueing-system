@@ -10,5 +10,10 @@ Rails.application.routes.draw do
   post '/sign_in', to: 'sessions#create'
 
   delete '/logout', to: 'sessions#destroy'
-  root 'home#index'
+
+  get '/appointment', to: 'covid_appointments#new'
+  post '/appointment', to: 'covid_appointments#create'
+
+  get 'home', to: 'home#index'
+  root 'welcome#index'
 end
