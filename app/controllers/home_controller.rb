@@ -3,6 +3,7 @@ class HomeController < ApplicationController
     if Current.user 
       if Current.user.role == 1
         @covids = Covid.all
+        render :admin
       else
         @covids = Current.user.covids
       end

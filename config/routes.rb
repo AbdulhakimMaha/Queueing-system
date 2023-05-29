@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   get '/appointment', to: 'covid_appointments#new'
   post '/appointment', to: 'covid_appointments#create'
+  patch '/appointment/:id', to: 'covid_appointments#update' 
 
   get 'home', to: 'home#index'
   root 'welcome#index'

@@ -12,6 +12,11 @@ class CovidAppointmentsController < ApplicationController
 
 	end
 
+	def update
+		puts param[:id]
+		redirect_to home_path
+	end
+
 	private
 	def covid_params
 		params.require(:covid).permit(:test_date)

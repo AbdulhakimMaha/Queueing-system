@@ -1,0 +1,23 @@
+<h3>Hi, Admin</h3>
+<table class="table mt-5">
+  <thead>
+	<tr class="table-primary" >
+	  <th scope="col">#</th>
+	  <th scope="col">Patient</th>
+	  <th scope="col">Test Date</th>
+	  <th scope="col">Actual Test Date</th>
+	  <th scope="col">Status</th>
+	</tr>
+  </thead>
+  <tbody>
+	<% @covids.each_with_index do |c,idx| %>
+		<tr>
+			<th scope="row"><%= idx+1 %></th>
+			<td><%= c.user_id %></td>	
+			<td><%= c.test_date %></td>	
+			<td><%= c.actual_test_date %></td>	
+			<td><%= button_to c.status, appointment_path(), method: :patch, class: "btn btn-outline-primary" %></td>
+		</tr>
+	<% end %>
+  </tbody>
+</table>
