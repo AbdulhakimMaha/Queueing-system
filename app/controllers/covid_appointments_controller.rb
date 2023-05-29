@@ -17,21 +17,25 @@ class CovidAppointmentsController < ApplicationController
 
 	end
 
-	def update_to_pending
+	def update_status_to_pending
 		covid = Covid.find(params[:id])
 		# puts covid.status
 		covid.update(actual_test_date: Time.now, status: "pending")
-
-		# puts covid.pending!
-
-
-		# if covid.status.to_i < 3
-		# 	# covid.update(status: s)
-		# else
-		# 	# covid.update(status: 0)
-		# end
 		puts covid.status
+		redirect_to home_path, notice: "Status update successfully."
+	end
 
+	def update_status_to_positive
+		covid = Covid.find(params[:id])
+		covid.update(status: "positive")
+		puts covid.status.to_s + "histssss"
+		redirect_to home_path, notice: "Status update successfully."
+	end
+
+	def update_status_to_negative
+		covid = Covid.find(params[:id])
+		covid.update(status: "negative")
+		puts covid.status.to_s + "histssss"
 		redirect_to home_path, notice: "Status update successfully."
 	end
 

@@ -15,9 +15,9 @@ Rails.application.routes.draw do
 
   get '/appointment', to: 'covid_appointments#new'
   post '/appointment', to: 'covid_appointments#create'
-  patch '/appointment/:id', to: 'covid_appointments#update_to_pending', as: 'update_status_to_pending'
-  patch '/appointment/:id', to: 'covid_appointments#update_to_negative', as: 'update_status_to_negative'
-  patch '/appointment/:id', to: 'covid_appointments#update_to_positive', as: 'update_status_to_positive'
+  patch '/appointment/:id/pending', to: 'covid_appointments#update_status_to_pending', as: 'update_status_to_pending'
+  patch '/appointment/:id/negative', to: 'covid_appointments#update_status_to_negative', as: 'update_status_to_negative'
+  patch '/appointment/:id/positive', to: 'covid_appointments#update_status_to_positive', as: 'update_status_to_positive'
 
   get 'home', to: 'home#index'
   root 'welcome#index'

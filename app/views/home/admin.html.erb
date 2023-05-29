@@ -7,6 +7,7 @@
 	  <th scope="col">Test Date</th>
 	  <th scope="col">Actual Test Date</th>
 	  <th scope="col">Status</th>
+	  <th scope="col">Change to</th>
 	</tr>
   </thead>
   <tbody>
@@ -16,11 +17,27 @@
 			<td><%= find_user c.user_id %></td>
 			<td><%= c.test_date %></td>
 			<td><%= c.actual_test_date %></td>
-			<% if c.status == 'waiting' %>
-				<td><%= button_to c.status, update_status_to_pending_path(id: c.id), method: :patch, class: "btn btn-outline-primary" %></td>
+			<% if c.status != 'pending'  %>
+				<td>
+					<p><%= c.status %></p>
+				</td>
+				<% if c.status == 'waiting' %>
+					<td><%= button_to "pending", update_status_to_pending_path(id: c.id), method: :patch, class: "btn btn-outline-primary" %></td>
+				<% else %>
+				 	<td></td>
+				<% end %>
 			<% end %>
 			<% if c.status == 'pending' %>
-				<td><%= button_to c.status, update_status_to_negative_path(id: c.id), method: :patch, class: "btn btn-outline-success" %></td>
+				<td>
+					<p class="text "><%= c.status %></p>
+					<!-- <%= button_to c.status, update_status_to_negative_path(id: c.id), method: :patch, class: "btn btn-outline-success" %> -->
+				</td>
+				<td>
+					<div class="d-flex">
+						<%= button_to "positive", update_status_to_positive_path(id: c.id), method: :patch, class: "btn btn-outline-success" %>
+						<%= button_to "negative", update_status_to_negative_path(id: c.id), method: :patch, class: "btn btn-outline-danger ms-1" %>
+					</div>
+				</td>
 			<% end %>
 		</tr>
 	<% end %>
