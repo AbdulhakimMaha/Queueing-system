@@ -13,10 +13,15 @@
 	<% @covids.each_with_index do |c,idx| %>
 		<tr>
 			<th scope="row"><%= idx+1 %></th>
-			<td><%= c.user_id %></td>	
-			<td><%= c.test_date %></td>	
-			<td><%= c.actual_test_date %></td>	
-			<td><%= button_to c.status, appointment_path(), method: :patch, class: "btn btn-outline-primary" %></td>
+			<td><%= find_user c.user_id %></td>
+			<td><%= c.test_date %></td>
+			<td><%= c.actual_test_date %></td>
+			<% if c.status == 'waiting' %>
+				<td><%= button_to c.status, update_status_to_pending_path(id: c.id), method: :patch, class: "btn btn-outline-primary" %></td>
+			<% end %>
+			<% if c.status == 'pending' %>
+				<td><%= button_to c.status, update_status_to_negative_path(id: c.id), method: :patch, class: "btn btn-outline-success" %></td>
+			<% end %>
 		</tr>
 	<% end %>
   </tbody>
