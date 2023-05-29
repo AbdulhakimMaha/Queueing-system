@@ -1,5 +1,14 @@
 <h1>Covid Appointment</h1>
 <%= form_for(@covid, url: appointment_path) do |f| %>
+
+	<% if @covid.errors.any? %>
+	<div class="alert alert-danger">
+		<% @covid.errors.full_messages.each do |m| %>
+			<div class=""><%= m %></div>
+		<% end %>
+	</div>
+	<% end %>
+
 	<div class="mb-3">
 		<%= f.label :test_date ,class: "form-label"%> <br>
 		<%= f.date_field :test_date ,class: "form-control"%>
@@ -8,4 +17,3 @@
 	<%= f.submit "Submit", class: "btn btn-primary form-control" %>
 	</div>
 <% end %>
-  

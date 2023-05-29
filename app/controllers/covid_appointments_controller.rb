@@ -1,12 +1,17 @@
 class CovidAppointmentsController < ApplicationController
 	def new
 		@covid = Covid.new
+		puts @covid.inspect + "from new"
 	end
 	def create
+		puts "before create hits!!!!!!!!!!!!!!!!!"
 		@covid = Current.user.covids.create(covid_params)
+		puts "after create hits!!!!!!!!!!!!!!!!!"
 		if @covid.save
+			puts "create hits!!!!!!!!!!!!!!!!!"
 			redirect_to home_path, notice: "Create appointment successfully."
 		else
+			puts "error create hits!!!!!!!!!!!!!!!!!"
 			render :new
 		end
 
