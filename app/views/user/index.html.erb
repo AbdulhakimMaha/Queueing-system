@@ -1,0 +1,19 @@
+<h1><%= @user.fullname %></h1>
+<div class="mb-3">
+    <p>Citizen ID: <%= @user.citizen_id %></p>
+</div>
+<div class="mb-3">
+    <p>Date of Birth: <%= @user.date_of_birth %></p>
+</div>
+<div class="mb-3">
+    <p>Gender: <%= @user.gender %></p>
+</div>
+<div class="mb-3">
+    <p>Address: <%= @user.address %></p>
+</div>
+<div class="mb-3">
+    <p>Contact Number: <%= @user.contact_number %></p>
+</div>
+
+<%= link_to "Edit", edit_user_path(id: @user.id),class: "btn btn-outline-success" %>
+<%= link_to "Change Password", edit_password_path(id: @user.id),class: "btn btn-outline-success" %>

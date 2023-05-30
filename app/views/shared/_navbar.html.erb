@@ -14,7 +14,7 @@
         <% if Current.user %>
         <div class="d-flex flex-row justify-content-center align-center text-center">
           <li class="nav-item text-center">
-            <span class="nav-item-text text-center"><%= Current.user.fullname %></span>
+            <span class="nav-item-text text-center"><%= link_to Current.user.fullname, user_path(id: Current.user.id), class: "nav-link text-primary" %></span>
           </li>
           <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-outline-secondary ms-3" %>
         </div>

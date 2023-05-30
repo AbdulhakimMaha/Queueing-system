@@ -12,17 +12,17 @@
 
 ActiveRecord::Schema.define(version: 2023_05_28_154011) do
 
-  create_table "covids", force: :cascade do |t|
+  create_table "covids", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.date "test_date"
     t.date "actual_test_date"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_covids_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "fullname"
     t.string "gender"
     t.date "date_of_birth"
@@ -35,4 +35,5 @@ ActiveRecord::Schema.define(version: 2023_05_28_154011) do
     t.integer "role", default: 0
   end
 
+  add_foreign_key "covids", "users"
 end

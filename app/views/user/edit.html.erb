@@ -1,0 +1,45 @@
+<h1>Edit Your Credential</h1>
+<%= form_for(@user, url: edit_user_update_path) do |f| %>
+
+	<% if @user.errors.any? %>
+	<div class="alert alert-danger">
+		<% @user.errors.full_messages.each do |m| %>
+			<div class=""><%= m %></div>
+		<% end %>
+	</div>
+	<% end %>
+
+
+	<div class="mb-3">
+		<%= f.label :Citizen_ID ,class: "form-label" %>
+		<%= f.text_field :citizen_id, class: "form-control" %>
+	</div>
+	<div class="mb-3">
+		<%= f.label :fullname ,class: "form-label" %>
+		<%= f.text_field :fullname, class: "form-control" %>
+	</div>
+	<div class="mb-3">
+		<%= f.label :gender ,class: "form-label"%>
+		<div class="d-flex flex-row">
+		<%= f.radio_button :gender, 'Male', class: "mx-3" %> Male
+		<%= f.radio_button :gender, 'Female', class: "mx-3" %> Female
+		<%= f.radio_button :gender, 'Other', class: "mx-3" %> Other
+		</div>
+	</div>
+	<div class="mb-3">
+		<%= f.label :date_of_birth ,class: "form-label"%> <br>
+		<%= f.date_field :date_of_birth ,class: "form-control"%>
+	</div>
+	<div class="mb-3">
+		<%= f.label :address ,class: "form-label" %>
+		<%= f.text_field :address, class: "form-control" %>
+	</div>
+	<div class="mb-3">
+		<%= f.label :contact_number,class: "form-label" %>
+		<%= f.telephone_field :contact_number, class: "form-control" %>
+	</div>
+	<div class="mb-3">
+		<%= f.submit "Update",class: "btn btn-primary" %>
+	</div>
+<% end %>
+
