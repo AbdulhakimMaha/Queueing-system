@@ -7,10 +7,10 @@ class SessionsController < ApplicationController
 		user = User.find_by(citizen_id: params[:citizen_id].to_i)
 		if user.present? && user.authenticate(params[:password])
 			session[:user_id] = user.id
-			redirect_to home_path, notice: "Logged in successfully."
+			redirect_to home_path, status: 301, notice: "Logged in successfully."
 		else
 			flash[:alert] = "Invalid Citizen ID or password."
-			render :new
+			render :new, status: 400
 		end
 	end
 

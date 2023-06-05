@@ -1,0 +1,1 @@
+User.create({ fullname: "Abdulhakim Maha", gender: "Male", date_of_birth: "2002-05-02", citizen_id: 1111111111111, address: "123, Lardkrabang", contact_number: "1010101010", password: "11111111", password_confirmation: "11111111" })
